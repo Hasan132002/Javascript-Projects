@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Shopping Cart</title>
+</head>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+    }
+    
+    .product {
+        border: 1px solid #ccc;
+        padding: 10px;
+        margin: 10px;
+        width: 200px;
+        display: inline-block;
+    }
+    
+    button {
+        background-color: #008CBA;
+        color: white;
+        border: none;
+        padding: 5px 10px;
+        cursor: pointer;
+    }
+    
+    button:hover {
+        background-color: #005b80;
+    }
+    
+</style>
+<body>
+    <h1>Products</h1>
+    <div id="products">
+        <div class="product">
+            <h2>Product 1</h2>
+            <p>Price: $10</p>
+            <button onclick="addToCart('Product 1', 10)">Add to Cart</button>
+        </div>
+        <div class="product">
+            <h2>Product 2</h2>
+            <p>Price: $20</p>
+            <button onclick="addToCart('Product 2', 20)">Add to Cart</button>
+        </div>
+    </div>
+    
+    <h1>Shopping Cart</h1>
+    <div id="cart">
+        <!-- Cart items will be displayed here -->
+    </div>
+    
+    <h1>Total: <span id="total">$0</span></h1>
+    
+    <button id="checkout" onclick="checkout()">Checkout</button>
+
+    <div id="cart-button">
+        <button onclick="showCart()">Cart <span id="cart-count">0</span></button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+    <!-- <script>
+// Array to store products
+const products = [];
+
+// Array to store the shopping cart
+const cart = [];
+
+// Function to add a product to the cart
+function addToCart(productName, productPrice) {
+    cart.push({ name: productName, price: productPrice });
+    updateCartDisplay();
+}
+
+// Function to update the cart display
+function updateCartDisplay() {
+    const cartElement = document.getElementById('cart');
+    cartElement.innerHTML = '';
+
+    let total = 0;
+
+    cart.forEach(item => {
+        const itemElement = document.createElement('div');
+        itemElement.innerHTML = `${item.name} - $${item.price}`;
+        cartElement.appendChild(itemElement);
+        total += item.price;
+    });
+
+    const totalElement = document.getElementById('total');
+    totalElement.textContent = `$${total}`;
+}
+
+// Function to proceed to checkout
+function checkout() {
+    alert('Thank you for your purchase!');
+    // Clear the cart
+    cart.length = 0;
+    updateCartDisplay();
+}
+
+// Initial cart display update
+updateCartDisplay();
+
+
+
+    </script>
+ -->
+ <!-- <script>
+    // Array to store products
+const products = [];
+
+// Array to store the shopping cart
+const cart = [];
+
+// Function to add a product to the cart
+function addToCart(productName, productPrice) {
+    cart.push({ name: productName, price: productPrice });
+    updateCartDisplay();
+}
+
+// Function to update the cart display
+function updateCartDisplay() {
+    const cartElement = document.getElementById('cart');
+    cartElement.innerHTML = '';
+
+    let total = 0;
+
+    cart.forEach(item => {
+        const itemElement = document.createElement('div');
+        itemElement.innerHTML = `${item.name} - $${item.price}`;
+        cartElement.appendChild(itemElement);
+        total += item.price;
+    });
+
+    const totalElement = document.getElementById('total');
+    totalElement.textContent = `$${total}`;
+
+    // Update the cart button count
+    const cartCount = document.getElementById('cart-count');
+    cartCount.textContent = cart.length;
+}
+
+// Function to show the cart
+function showCart() {
+    const cartElement = document.getElementById('cart');
+    cartElement.style.display = 'block';
+}
+
+// Function to hide the cart
+function hideCart() {
+    const cartElement = document.getElementById('cart');
+    cartElement.style.display = 'none';
+}
+
+// Function to proceed to checkout
+function checkout() {
+    alert('Thank you for your purchase!');
+    // Clear the cart
+    cart.length = 0;
+    updateCartDisplay();
+}
+
+// Initial cart display update
+updateCartDisplay();
+
+ </script> -->
+</body>
+<!-- <script>
+    // Array to store products
+const products = [];
+
+// Array to store the shopping cart
+const cart = [];
+
+// Function to add a product to the cart
+function addToCart(productName, productPrice) {
+    cart.push({ name: productName, price: productPrice });
+    updateCartDisplay();
+}
+
+// Function to update the cart display
+function updateCartDisplay() {
+    const cartElement = document.getElementById('cart');
+    cartElement.innerHTML = '';
+
+    let total = 0;
+
+    cart.forEach(item => {
+        const itemElement = document.createElement('div');
+        itemElement.innerHTML = `${item.name} - $${item.price}`;
+        cartElement.appendChild(itemElement);
+        total += item.price;
+    });
+
+    const totalElement = document.getElementById('total');
+    totalElement.textContent = `$${total}`;
+
+    // Update the cart button count
+    const cartCount = document.getElementById('cart-count');
+    cartCount.textContent = cart.length;
+}
+
+// Function to show the cart
+function showCart() {
+    const cartItems = cart.map(item => `${item.name} - $${item.price}`).join('\n');
+    alert(`Cart Items:\n${cartItems}`);
+}
+
+// Function to hide the cart
+function hideCart() {
+    const cartElement = document.getElementById('cart');
+    cartElement.style.display = 'none';
+}
+
+// Function to proceed to checkout
+function checkout() {
+    alert('Thank you for your purchase!');
+    // Clear the cart
+    cart.length = 0;
+    updateCartDisplay();
+}
+
+// Initial cart display update
+updateCartDisplay();
+
+</script> -->
+</html>

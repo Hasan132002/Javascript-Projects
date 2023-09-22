@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Checkout</title>
+</head>
+<body>
+    <h1>Checkout</h1>
+    <div id="cart">
+        <!-- Cart items will be displayed here -->
+    </div>
+    
+    <h1>Total: <span id="total">$0</span></h1>
+
+    <script>
+        // Initialize the cart from local storage
+        const cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+        // Function to update the cart display on the checkout page
+        function updateCartDisplay() {
+            const cartElement = document.getElementById('cart');
+            cartElement.innerHTML = '';
+
+            let total = 0;
+
+            cart.forEach(item => {
+                const itemElement = document.createElement('div');
+                itemElement.innerHTML = `${item.name} - $${item.price}`;
+                cartElement.appendChild(itemElement);
+                total += item.price;
+            });
+
+            const totalElement = document.getElementById('total');
+            totalElement.textContent = `$${total}`;
+        }
+
+        // Initial cart display update
+        updateCartDisplay();
+    </script>
+</body>
+</html>
