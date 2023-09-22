@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Word Guessing Game</title>
+</head>
+<body>
+    <h1>Word Guessing Game</h1>
+    <p>Guess the word:</p>
+    <p id="wordDisplay"></p>
+    <p>Guess a letter:</p>
+    <input type="text" id="letterInput">
+    <input type="submit" value="Submit Guess" id="guessButton">
+    <p id="message"></p>
+    <script>
+        // Define an array of words to choose from
+        const wordList = ["apple", "banana", "cherry", "orange", "grape", "strawberry"];
+        const maxAttempts = 6; // Maximum allowed incorrect guesses
+
+        let wordToGuess;
+        let guessedWord = [];
+        let incorrectGuesses = 0;
+
+        // Pick a random word from the word list
+        function pickRandomWord() {
+            const randomIndex = Math.floor(Math.random() * wordList.length);
+            return wordList[randomIndex];
+        }
+
+        // Initialize the game
+        function initializeGame() {
+            wordToGuess = pickRandomWord();
+            guessedWord = Array(wordToGuess.length).fill('_');
+            incorrectGuesses = 0;
+            displayWord();
+            setMessage("");
+        }
+
+        // Display the current state of the word
+        function displayWord() {
+            document.getElementById("wordDisplay").textContent = guessedWord.join(" ");
+        }
+
+        // Event listener for the guess button
+        document.getElementById("guessButton").addEventListener("click", function () {
+            const letter = document.getElementById("letterInput").value.toLowerCase();
+
+            if (letter.length !== 1 || !letter.match(/[a-z]/)) {
+                setMessage("Please enter a single letter.");
+            } else {
+                checkGuess(letter);
+            }
+
+            document.getElementById("letterInput").value = "";
+        });
+
+        // Check if the guessed letter is in the word
+        function checkGuess(letter) {
+            if (wordToGuess.includes(letter)) {
+                for (let i = 0; i < wordToGuess.length; i++) {
+                    if (wordToGuess[i] === letter) {
+                        guessedWord[i] = letter;
+                    }
+                }
+
+                displayWord();
+
+                if (!guessedWord.includes('_')) {
+                    setMessage("Congratulations! You guessed the word.");
+                    disableInput();
+                }
+            } else {
+                incorrectGuesses++;
+                updateHangmanImage();
+                if (incorrectGuesses >= maxAttempts) {
+                    setMessage(`Sorry, you've run out of attempts. The word was "${wordToGuess}".`);
+                    disableInput();
+                } else {
+                    setMessage(`Incorrect guess. You have ${maxAttempts - incorrectGuesses} attempts left.`);
+                }
+            }
+        }
+
+        // Display hangman image based on incorrect guesses
+        function updateHangmanImage() {
+            // You can display different hangman images based on the number of incorrect guesses
+            // For simplicity, I'll just display a message here
+        }
+
+        // Display a message
+        function setMessage(message) {
+            document.getElementById("message").textContent = message;
+        }
+
+        // Disable input after winning or losing
+        function disableInput() {
+            document.getElementById("letterInput").disabled = true;
+            document.getElementById("guessButton").disabled = true;
+        }
+
+        // Start the game
+        initializeGame();
+    </script>
+</body>
+</html>
