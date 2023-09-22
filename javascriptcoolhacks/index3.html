@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+//  <!-- OneLine Swap: Swap the values of two variables in a single line without using a temporary variable -->
+    let a = 5, b = 10;
+    [a, b] = [b, a];
+    
+
+//<!-- Shuffle an Array: Shuffle the elements of an array randomly. -->
+const array = [1, 2, 3, 4, 5];
+array.sort(() => Math.random() - 0.5);
+
+//<!-- Convert String to Integer: Quickly convert a string containing a number to an integer. -->
+
+const numString = "42";
+const num = +numString;
+
+
+//<!-- Remove Duplicates from an Array: Remove duplicate values from an array. -->
+
+const array = [1, 2, 2, 3, 4, 4, 5];
+const uniqueArray = [...new Set(array)];
+
+//<!-- Detect Mobile Devices: Detect if the user is using a mobile device. -->
+const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+
+
+//<!-- Scroll to Top Button: Create a "Scroll to Top" button that appears when the user scrolls down and disappears when at the top. -->
+window.onscroll = function() {
+    const scrollButton = document.getElementById("scrollButton");
+    if (document.documentElement.scrollTop > 100) {
+        scrollButton.style.display = "block";
+    } else {
+        scrollButton.style.display = "none";
+    }
+};
+
+
+//<!-- Copy to Clipboard: Create a function to copy text to the clipboard. -->
+function copyToClipboard(text) {
+    const textArea = document.createElement("textarea");
+    textArea.value = text;
+    document.body.appendChild(textArea);
+    textArea.select();
+    document.execCommand("copy");
+    document.body.removeChild(textArea);
+}
+
+//<!-- Generate Random Password: Generate a random password of a specified length. -->
+
+
+function generatePassword(length) {
+    const charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+    let password = "";
+    for (let i = 0; i < length; i++) {
+        const randomIndex = Math.floor(Math.random() * charset.length);
+        password += charset[randomIndex];
+    }
+    return password;
+}
+
+//<!-- Auto-Refresh Page: Automatically refresh the page after a specified time interval. -->
+
+setTimeout(function() {
+    location.reload();
+}, 5000); // Refresh every 5 seconds
+
+
+//<!-- Console Fun: Create custom console log styles. -->
+
+console.log("%cThis is a stylish console log", "color: blue; font-size: 20px;");
+
+
+
+
+
+
+
+</script>
+</html>
